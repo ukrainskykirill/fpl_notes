@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+
+  postgres-14:
+    image: postgres:14.5
+    container_name: postgres
+    restart: always
+    expose:
+      - 5432
+    env_file:
+      - ./fpl_notes/.env
+    volumes:
+      - ./init_user_db.sql:/docker-entrypoint-initdb.d/init_user_db.sql
+
+  django:
+    build: .
+    container_name: django
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8080"
+    ports:
+      - 8080:8080
+    env_file:
+      - ./fpl_notes/.env
+    depends_on:
+      - postgres-14
+
+  nginx:
+    image: nginx:1.19.2
+    container_name: nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - django
+    ports:
+      - '80:80'

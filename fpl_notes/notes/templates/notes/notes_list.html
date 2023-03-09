@@ -1,0 +1,17 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+<p>________</p>
+<div>
+    <ul class="hr">
+        {% for s in seasons %}
+        <li><a href="{{ s.get_absolute_url }}">{{s.season_start}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+{% for note in notes %}
+ <p align="center">заметка {{ note.tour }} тура cезона {{note.season}} </p>
+ <p align="center"><a href="{{ note.get_absolute_url }}">открыть</a></p>
+ <p align="center">_________</p>
+{% endfor %}
+{% endblock %}

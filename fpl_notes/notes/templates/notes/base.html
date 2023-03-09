@@ -1,0 +1,33 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link type="text/css" href="{% static 'notes/css/styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+{% block mainmenu %}
+<div>
+    <ul class="hr">
+        {% for m in menu %}
+        <li><a href="{% url m.url_name %}">{{m.title}}</a></li>
+        {% endfor %}
+        {% if request.user.is_authenticated %}
+        <li>{{ user.username }} | <a href="{% url 'logout' %}">Выйти</a> </li>
+        {% else %}
+        <li><a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a></li>
+        {% endif %}
+    </ul>
+
+</div>
+{% endblock %}
+{% block content %}
+<h3 align="center">ГЛАВНАЯ СТРАНИЦА</h3>
+<p>здесь ты можешь оставлять свои заметки о том, как прошел твой тур или планы на будущее</p>
+<p>замены тыкать и скриншоты тура сохранить</p>
+<p>удачи и зеленых стрелочек)</p>
+{% endblock %}
+</body>
+</html>

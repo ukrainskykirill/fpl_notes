@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "notes-project"
+version = "0.1.0"
+description = ""
+authors = ["ukrainskykirill <ukrainsky.kirill@gmail.com>"]
+readme = "README.md"
+packages = [{include = "notes_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.1.7"
+psycopg2-binary = "^2.9.5"
+django-environ = "^0.9.0"
+pillow = "^9.4.0"
+pytest-django = "^4.5.2"
+black = "^23.1.0"
+isort = "^5.12.0"
+pytest = "^7.2.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

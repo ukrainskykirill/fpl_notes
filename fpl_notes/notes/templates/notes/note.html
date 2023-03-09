@@ -1,0 +1,10 @@
+{% extends 'notes/base.html' %}
+
+{% block content %}
+<h1 align="center">заметка {{ note.tour }} тура сезона {{note.season}}</h1>
+<p align="center"> {{note.notes}} </p>
+<p align="center"> Замена - {{note.substatution_off}} на {{note.substatution_on}} </p>
+<p><img src="{{note.screenshot}}" hight="100" aligh="center"> </p>
+<p><a href="{{ note.get_update_url }}">изменить заметку</a> </p>
+<p><a href="{% url sub.url_name note.slug %}">{{sub.button}}</p>
+{% endblock %}
