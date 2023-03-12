@@ -4,9 +4,19 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: tests
+      - name: Check out repository
         uses: actions/checkout@v3
-      - name: poetry
+      - name: Set up python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+      - name: Install dependence
         run: poetry install
       - name: black
         run: black .
