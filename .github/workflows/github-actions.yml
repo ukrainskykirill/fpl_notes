@@ -12,7 +12,7 @@ jobs:
           options: "--check --verbose"
   docker:
     needs: [lint]
-    runs-on: self-hosted
+    runs-on: ubuntu-lates
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
