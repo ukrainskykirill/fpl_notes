@@ -83,3 +83,6 @@ def get_season(request: HttpRequest):
     team = Team.objects.get(owner=user)
     season = Season.objects.filter(team=team).order_by("id").last()
     return season
+
+
+joi= ['124','143' , 'l']
