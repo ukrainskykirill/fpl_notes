@@ -19,7 +19,9 @@ jobs:
       - name: Install dependence
         run: poetry install
       - name: black
-        run: black .
+        uses: psf/black@stable
+        with:
+          options: "--check --verbose"
 
 
 
