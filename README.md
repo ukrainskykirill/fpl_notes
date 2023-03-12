@@ -5,3 +5,5 @@
 <b>STACK</b>:
 1. <b>Django</b>
 2. <b>Postgres</b>
+3. <b>PyTest</b>
+4. <b>GitHub Actions</b>

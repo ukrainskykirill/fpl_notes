@@ -2,11 +2,15 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 
-from .forms import (AcceptSubstatution, AddNotes, AddPlayersFormSet, AddSeason,
-                    AddTeam)
-from .services.fpl_magic import (get_note_by_tour, get_season,
-                                 get_seasons_and_notes, get_team, substatution,
-                                 validation_by_position)
+from .forms import AcceptSubstatution, AddNotes, AddPlayersFormSet, AddSeason, AddTeam
+from .services.fpl_magic import (
+    get_note_by_tour,
+    get_season,
+    get_seasons_and_notes,
+    get_team,
+    substatution,
+    validation_by_position,
+)
 from .utils import menu, sub
 
 
