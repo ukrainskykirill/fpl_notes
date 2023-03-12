@@ -16,9 +16,9 @@ DEBUG = env.bool("DEBUG", default=False)
 if not DEBUG:
     ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 else:
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ['http://*']
+CSRF_TRUSTED_ORIGINS = env.list("CSRF_TRUSTED_ORIGINS")
 
 INSTALLED_APPS = [
     "django.contrib.admin",
