@@ -11,30 +11,35 @@ jobs:
         with:
           options: "--check --verbose"
 
-  pytest:
+  docker:
     needs: [lint]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-      - name: setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
-      - name: Install dependencies
-        run: poetry install
-      - name: pytest
-        uses: pavelzw/pytest-action@v2
-        with:
-          emoji: true
-          verbose: true
-          job-summary: true
+      - name: Install Compose
+        uses: ndeloof/install-docker-compose
+#    steps:
+#      - name: Check out repository
+#        uses: actions/checkout@v3
+#      - name: setup python
+#        uses: actions/setup-python@v4
+#        with:
+#          python-version: '3.11'
+#      - name: Install Poetry
+#        uses: snok/install-poetry@v1
+#        with:
+#          virtualenvs-create: true
+#          virtualenvs-in-project: true
+#          installer-parallel: true
+#      - name: Install dependencies
+#        run: poetry install
+#      - name: pytest
+#        uses: pavelzw/pytest-action@v2
+#        with:
+#          emoji: true
+#          verbose: true
+#          job-summary: true
 
 
 
