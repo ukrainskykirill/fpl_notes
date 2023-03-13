@@ -11,39 +11,39 @@ jobs:
         with:
           options: "--check --verbose"
 
-  docker:
+#  docker:
+#    needs: [lint]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Check out repository
+#        uses: actions/checkout@v3
+#      - name: Docker Compose Action
+#        uses: isbang/compose-action@v1.4.1
+#        with:
+#          compose-file: './docker-compose.yml'
+
+  tests:
     needs: [lint]
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-      - name: Docker Compose Action
-        uses: isbang/compose-action@v1.4.1
+      - name: setup python
+        uses: actions/setup-python@v4
         with:
-          compose-file: './docker-compose.yml'
-
-
-#    steps:
-#      - name: Check out repository
-#        uses: actions/checkout@v3
-#      - name: setup python
-#        uses: actions/setup-python@v4
-#        with:
-#          python-version: '3.11'
-#      - name: Install Poetry
-#        uses: snok/install-poetry@v1
-#        with:
-#          virtualenvs-create: true
-#          virtualenvs-in-project: true
-#          installer-parallel: true
-#      - name: Install dependencies
-#        run: poetry install
-#      - name: pytest
-#        uses: pavelzw/pytest-action@v2
-#        with:
-#          emoji: true
-#          verbose: true
-#          job-summary: true
+          python-version: '3.11'
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+          installer-parallel: true
+      - name: Install dependencies
+        run: poetry install
+      - name: pytest pre
+        run: cd fpl_notes
+      - name: pytest
+        run: pytest
 
 
 
