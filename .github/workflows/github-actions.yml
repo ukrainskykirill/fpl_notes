@@ -17,9 +17,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-      - name: docker compose
-        run: |
-        docker-compose up
+      - name: Docker Compose Action
+        uses: isbang/compose-action@v1.4.1
 
 
 #    steps:
