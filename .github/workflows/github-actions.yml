@@ -18,8 +18,8 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
       - name: docker compose
-        run: docker-compose up
-        env: fpl_notes/.env
+        run: |
+        docker-compose up
 
 
 #    steps:
